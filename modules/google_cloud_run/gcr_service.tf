@@ -9,6 +9,14 @@ resource google_cloud_run_service gcr_app_service {
                 ports {
                     container_port = var.container_port
                 }
+
+                dynamic "env" {
+                    for_each = var.env
+                    content {
+                        name = env.value.name
+                        value = env.value.value
+                    }
+                }
             }
         }
     }

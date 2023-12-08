@@ -22,3 +22,9 @@ variable container_image {
   type = string
   description = "Container image to run"
 }
+variable env {
+    type = list(object({
+        name = string
+        value = string
+    }))
+}
